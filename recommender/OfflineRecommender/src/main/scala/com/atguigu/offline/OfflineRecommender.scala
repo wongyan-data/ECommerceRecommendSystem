@@ -71,7 +71,7 @@ object OfflineRecommender {
     val model = ALS.train( trainData, rank, iterations, lambda )
 
     // 2. 获得预测评分矩阵，得到用户的推荐列表
-    // 用userRDD和productRDD做一个笛卡尔积，得到空的userProductsRDD
+    // 用userRDD和productRDD做一个笛卡尔积，得到空的userProductsRDD表示的评分矩阵
     val userProducts = userRDD.cartesian(productRDD)
     val preRating = model.predict(userProducts)
 
