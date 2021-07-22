@@ -7,13 +7,10 @@ import org.apache.spark.SparkConf
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
 /**
-  * Copyright (c) 2018-2028 尚硅谷 All Rights Reserved 
-  *
   * Project: ECommerceRecommendSystem
   * Package: com.atguigu.statistics
   * Version: 1.0
   *
-  * Created by wushengran on 2019/4/27 8:53
   */
 case class Rating( userId: Int, productId: Int, score: Double, timestamp: Int )
 case class MongoConfig( uri: String, db: String )
@@ -29,7 +26,7 @@ object StatisticsRecommender {
   def main(args: Array[String]): Unit = {
     val config = Map(
       "spark.cores" -> "local[1]",
-      "mongo.uri" -> "mongodb://localhost:27017/recommender",
+      "mongo.uri" -> "mongodb://hadoop102:27017/recommender",
       "mongo.db" -> "recommender"
     )
     // 创建一个spark config

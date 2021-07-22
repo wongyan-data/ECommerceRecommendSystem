@@ -10,19 +10,15 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
 import redis.clients.jedis.Jedis
 
 /**
-  * Copyright (c) 2018-2028 尚硅谷 All Rights Reserved 
-  *
   * Project: ECommerceRecommendSystem
   * Package: com.atguigu.online
   * Version: 1.0
-  *
-  * Created by wushengran on 2019/4/28 9:18
   */
 // 定义一个连接助手对象，建立到redis和mongodb的连接
 object ConnHelper extends Serializable{
   // 懒变量定义，使用的时候才初始化
-  lazy val jedis = new Jedis("localhost")
-  lazy val mongoClient = MongoClient(MongoClientURI("mongodb://localhost:27017/recommender"))
+  lazy val jedis = new Jedis("hadoop102")
+  lazy val mongoClient = MongoClient(MongoClientURI("mongodb://hadoop102:27017/recommender"))
 }
 
 case class MongoConfig( uri: String, db: String )
@@ -46,7 +42,7 @@ object OnlineRecommender {
   def main(args: Array[String]): Unit = {
     val config = Map(
       "spark.cores" -> "local[*]",
-      "mongo.uri" -> "mongodb://localhost:27017/recommender",
+      "mongo.uri" -> "mongodb://hadoop102:27017/recommender",
       "mongo.db" -> "recommender",
       "kafka.topic" -> "recommender"
     )
@@ -78,7 +74,7 @@ object OnlineRecommender {
 
     // 创建kafka配置参数
     val kafkaParam = Map(
-      "bootstrap.servers" -> "localhost:9092",
+      "bootstrap.servers" -> "hadoop102:9092",
       "key.deserializer" -> classOf[StringDeserializer],
       "value.deserializer" -> classOf[StringDeserializer],
       "group.id" -> "recommender",
