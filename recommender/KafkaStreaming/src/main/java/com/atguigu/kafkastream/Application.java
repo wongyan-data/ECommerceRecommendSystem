@@ -1,12 +1,10 @@
-package com.atguigu.kafkastream;/**
- * Copyright (c) 2018-2028 尚硅谷 All Rights Reserved
- * <p>
+package com.atguigu.kafkastream;
+/**
+
  * Project: ECommerceRecommendSystem
  * Package: com.atguigu.kafkastream
  * Version: 1.0
- * <p>
- * Created by wushengran on 2019/4/28 14:59
- */
+ * <p> */
 
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsConfig;
